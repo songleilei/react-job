@@ -1,1 +1,3 @@
-项目基于Redux+React Router+Node.js开发
+项目基于 Redux+ReactRouter+Node.js 开发
+
+2019.12.1 逐步更新

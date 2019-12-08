@@ -1,30 +1,30 @@
-import Axios from "axios";
+import Axios from 'axios'
 
-const USER_LIST = 'USER_LIST';
+const USER_LIST = 'USER_LIST'
 
 const initState = {
-    userlist:[]
+	userlist: []
 }
 
-export function chatuser(state=initState, action) {
-    switch (action.type) {
-        case USER_LIST:
-            return {...state, userlist:action.payload}
-        default:
-            return state;
-    }
+export function chatuser(state = initState, action) {
+	switch (action.type) {
+		case USER_LIST:
+			return { ...state, userlist: action.payload }
+		default:
+			return state
+	}
 }
 
 function userList(data) {
-    return { type: USER_LIST, payload: data}
+	return { type: USER_LIST, payload: data }
 }
 
 export function getUserList(type) {
-    return dispatch=>{
-        Axios.get('/user/list?type='+type).then(res=>{
-            if (res.data.code===0) {
-                dispatch(userList(res.data.data));
-            }
-        })
-    }
+	return (dispatch) => {
+		Axios.get('/user/list?type=' + type).then((res) => {
+			if (res.data.code === 0) {
+				dispatch(userList(res.data.data))
+			}
+		})
+	}
 }

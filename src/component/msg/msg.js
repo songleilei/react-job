@@ -1,62 +1,60 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Object } from 'core-js';
-import { List, Badge } from 'antd-mobile';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Object } from 'core-js'
+import { List, Badge } from 'antd-mobile'
+import { AvatarImages } from '../../util'
 
-@connect(
-    state=>state
-)
+@connect((state) => state)
 class Msg extends React.Component {
+	getLast(arr) {
+		return arr[arr.length - 1]
+	}
 
-    getLast(arr){
-        return arr[arr.length-1];
-    }
+	render() {
+		const Item = List.Item
+		const Brief = Item.Brief
+		const userid = this.props.user._id
+		const userinfo = this.props.chat.users
 
-    render() {
-        const Item = List.Item;
-        const Brief = Item.Brief;
-        const userid = this.props.user._id;
-        const userinfo = this.props.chat.users;
+		const msgGroup = {}
+		this.props.chat.chatmsg.forEach((v) => {
+			msgGroup[v.chatid] = msgGroup[v.chatid] || []
+			msgGroup[v.chatid].push(v)
+		})
 
-        const msgGroup = {}
-        this.props.chat.chatmsg.forEach(v => {
-            msgGroup[v.chatid] = msgGroup[v.chatid] || [];
-            msgGroup[v.chatid].push(v)
-        });
+		const chatList = Object.values(msgGroup).sort((a, b) => {
+			const a_last = this.getLast(a).creat_time
+			const b_last = this.getLast(b).creat_time
+			return b_last - a_last
+		})
 
-        const chatList = Object.values(msgGroup).sort((a, b)=>{
-            const a_last = this.getLast(a).creat_time;
-            const b_last = this.getLast(b).creat_time;
-            return b_last - a_last;
-        });
-        
-        return (
-            <div>
-               
-                {chatList.map(v=>{
-                    const lastItem = this.getLast(v);
-                    const targetId = lastItem.from===userid?lastItem.to:lastItem.from;
-                    const unreadNum = v.filter(v=>!v.read && v.to===userid).length
-                    return (
-                        <List key={lastItem._id}>
-                        <Item
-                            extra={<Badge text={unreadNum}></Badge>}
-                            thumb={require(`../../avatar/${userinfo[targetId].avatar}.png`)}
-                            arrow='horizontal'
-                            onClick={()=>{
-                                this.props.history.push(`/chat/${targetId}`)
-                            }}
-                        >
-                            {lastItem.content}
-                            <Brief>{userinfo[targetId].name}</Brief>
-                        </Item>
-                        </List>
-                    )
-                })}
-                
-            </div>
-            )
-    }
+		return (
+			<div>
+				{chatList.map((v) => {
+					const lastItem = this.getLast(v)
+					const targetId =
+						lastItem.from === userid ? lastItem.to : lastItem.from
+					const unreadNum = v.filter((v) => !v.read && v.to === userid).length
+					return (
+						<List key={lastItem._id}>
+							<Item
+								extra={<Badge text={unreadNum}></Badge>}
+								// thumb={require(`../../avatar/${userinfo[targetId].avatar}.png`)}
+								thumb={AvatarImages[`${userinfo[targetId].avatar}.png`].default}
+								arrow="horizontal"
+								onClick={() => {
+									this.props.history.push(`/chat/${targetId}`)
+								}}
+							>
+								{lastItem.content}
+								<Brief>{userinfo[targetId].name}</Brief>
+							</Item>
+						</List>
+					)
+				})}
+			</div>
+		)
+	}
 }
 
 export default Msg

@@ -2,6 +2,8 @@ import React from 'react'
 import { Grid, List } from 'antd-mobile'
 import PropTypes from 'prop-types'
 
+import { AvatarImages } from '../../util'
+
 class AvatarSelector extends React.Component {
 	static propTypes = {
 		selectAvatar: PropTypes.func.isRequired
@@ -15,7 +17,7 @@ class AvatarSelector extends React.Component {
 	render() {
 		const avatarList = Array.from(new Array(20)).map((_val, i) => ({
 			// icon: require(`../../avatar/${i + 1}.png`)
-			icon: images[`${i + 1}.png`].default,
+			icon: AvatarImages[`${i + 1}.png`].default,
 			index: `${i + 1}`
 		}))
 
@@ -44,16 +46,5 @@ class AvatarSelector extends React.Component {
 		)
 	}
 }
-
-const importAll = (r) => {
-	let images = {}
-	r.keys().map((item, index) => {
-		images[item.replace('./', '')] = r(item)
-	})
-
-	return images
-}
-
-const images = importAll(require.context('../../avatar', false, /.png$/))
 
 export default AvatarSelector

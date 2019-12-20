@@ -39,7 +39,7 @@ class User extends React.Component {
 				<Result
 					img={
 						<img
-							src={images[`${props.avatar}.png`].default}
+							src={images[`${props.avatar}.png`]}
 							alt="头像"
 							style={{ width: 60 }}
 						></img>

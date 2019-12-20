@@ -23,9 +23,9 @@ class NavLinkBar extends React.Component {
 						badge={v.path === '/msg' ? this.props.unread : 0}
 						key={v.path}
 						title={v.text}
-						// icon={{uri: require(`./img/${v.icon}.png`)}}
-						icon={{ uri: images[`${v.icon}.png`].default }}
-						selectedIcon={{ uri: images[`${v.icon}-active.png`].default }}
+						// icon={{ uri: require(`./img/${v.icon}.png`) }}
+						icon={{ uri: images[`${v.icon}.png`] }}
+						selectedIcon={{ uri: images[`${v.icon}-active.png`] }}
 						selected={pathname === v.path}
 						onPress={() => this.props.history.push(v.path)}
 					></TabBar.Item>

@@ -22,7 +22,7 @@ class UserCard extends React.Component {
 							<Card.Header
 								title={v.user}
 								// thumb={require(`../../avatar/${v.avatar}.png`)}
-								thumb={AvatarImages[`${v.avatar}.png`].default}
+								thumb={AvatarImages[`${v.avatar}.png`]}
 								extra={<span>{v.title}</span>}
 							/>
 							<Card.Body>

@@ -40,7 +40,7 @@ class Msg extends React.Component {
 							<Item
 								extra={<Badge text={unreadNum}></Badge>}
 								// thumb={require(`../../avatar/${userinfo[targetId].avatar}.png`)}
-								thumb={AvatarImages[`${userinfo[targetId].avatar}.png`].default}
+								thumb={AvatarImages[`${userinfo[targetId].avatar}.png`]}
 								arrow="horizontal"
 								onClick={() => {
 									this.props.history.push(`/chat/${targetId}`)

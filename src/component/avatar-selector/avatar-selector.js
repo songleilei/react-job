@@ -17,7 +17,7 @@ class AvatarSelector extends React.Component {
 	render() {
 		const avatarList = Array.from(new Array(20)).map((_val, i) => ({
 			// icon: require(`../../avatar/${i + 1}.png`)
-			icon: AvatarImages[`${i + 1}.png`].default,
+			icon: AvatarImages[`${i + 1}.png`],
 			index: `${i + 1}`
 		}))
 

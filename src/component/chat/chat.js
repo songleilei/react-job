@@ -26,8 +26,8 @@ class Chat extends React.Component {
 			this.props.getMsgList()
 			this.props.recvMsg()
 		}
-		const to = this.props.match.params.user
-		this.props.readMsg(to)
+		// const to = this.props.match.params.user
+		// this.props.readMsg(to)
 	}
 
 	componentWillUnmount() {
@@ -81,7 +81,7 @@ class Chat extends React.Component {
 				<QueueAnim>
 					{chatmsgs.map((v) => {
 						// const avatar = require(`../../avatar/${users[v.from].avatar}.png`)
-						const avatar = AvatarImages[`${users[v.from].avatar}.png`].default
+						const avatar = AvatarImages[`${users[v.from].avatar}.png`]
 						return v.from === userid ? (
 							<List key={v._id}>
 								<Item thumb={avatar}>{v.content}</Item>

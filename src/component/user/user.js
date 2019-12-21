@@ -4,7 +4,7 @@ import { Result, List, WhiteSpace, Modal } from 'antd-mobile'
 import browserCookie from 'browser-cookies'
 import { logoutSubmit } from '../../redux/user.redux'
 import { Redirect } from 'react-router-dom'
-import { importAllImages } from '../../util'
+// import { importAllImages } from '../../util'
 
 @connect((state) => state.user, { logoutSubmit })
 class User extends React.Component {
@@ -39,7 +39,8 @@ class User extends React.Component {
 				<Result
 					img={
 						<img
-							src={images[`${props.avatar}.png`]}
+							// src={images[`${props.avatar}.png`]}
+							src={require(`../../avatar/${props.avatar}.png`)}
 							alt="头像"
 							style={{ width: 60 }}
 						></img>
@@ -67,6 +68,6 @@ class User extends React.Component {
 	}
 }
 
-const images = importAllImages(require.context('../../avatar', false, /.png$/))
+// const images = importAllImages(require.context('../../avatar', false, /.png$/))
 
 export default User

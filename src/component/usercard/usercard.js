@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, WhiteSpace, WingBlank } from 'antd-mobile'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import { AvatarImages } from '../../util'
+// import { AvatarImages } from '../../util'
 
 @withRouter
 class UserCard extends React.Component {
@@ -21,8 +21,8 @@ class UserCard extends React.Component {
 						<Card key={v._id} onClick={() => this.handleClick(v)}>
 							<Card.Header
 								title={v.user}
-								// thumb={require(`../../avatar/${v.avatar}.png`)}
-								thumb={AvatarImages[`${v.avatar}.png`]}
+								thumb={require(`../../avatar/${v.avatar}.png`)}
+								// thumb={AvatarImages[`${v.avatar}.png`]}
 								extra={<span>{v.title}</span>}
 							/>
 							<Card.Body>

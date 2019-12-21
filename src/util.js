@@ -13,15 +13,15 @@ export function getChatId(userId, targetId) {
 	return [userId, targetId].sort().join('_')
 }
 
-export function importAllImages(r) {
-	let images = {}
-	r.keys().forEach((item) => {
-		images[item.replace('./', '')] = r(item)
-	})
+// export function importAllImages(r) {
+// 	let images = {}
+// 	r.keys().forEach((item) => {
+// 		images[item.replace('./', '')] = r(item)
+// 	})
 
-	return images
-}
+// 	return images
+// }
 
-export const AvatarImages = importAllImages(
-	require.context('./avatar', false, /.png$/)
-)
+// export const AvatarImages = importAllImages(
+// 	require.context('./avatar', false, /.png$/)
+// )

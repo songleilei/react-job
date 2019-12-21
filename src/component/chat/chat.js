@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { getMsgList, sendMsg, recvMsg, readMsg } from '../../redux/chat.redux'
 import { getChatId } from '../../util'
 import QueueAnim from 'rc-queue-anim'
-import { AvatarImages } from '../../util'
+// import { AvatarImages } from '../../util'
 
 @connect((state) => state, { getMsgList, sendMsg, recvMsg, readMsg })
 class Chat extends React.Component {
@@ -80,8 +80,8 @@ class Chat extends React.Component {
 
 				<QueueAnim>
 					{chatmsgs.map((v) => {
-						// const avatar = require(`../../avatar/${users[v.from].avatar}.png`)
-						const avatar = AvatarImages[`${users[v.from].avatar}.png`]
+						const avatar = require(`../../avatar/${users[v.from].avatar}.png`)
+						// const avatar = AvatarImages[`${users[v.from].avatar}.png`]
 						return v.from === userid ? (
 							<List key={v._id}>
 								<Item thumb={avatar}>{v.content}</Item>

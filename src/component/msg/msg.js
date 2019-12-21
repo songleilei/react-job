@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Object } from 'core-js'
 import { List, Badge } from 'antd-mobile'
-import { AvatarImages } from '../../util'
+// import { AvatarImages } from '../../util'
 
 @connect((state) => state)
 class Msg extends React.Component {
@@ -39,8 +39,8 @@ class Msg extends React.Component {
 						<List key={lastItem._id}>
 							<Item
 								extra={<Badge text={unreadNum}></Badge>}
-								// thumb={require(`../../avatar/${userinfo[targetId].avatar}.png`)}
-								thumb={AvatarImages[`${userinfo[targetId].avatar}.png`]}
+								thumb={require(`../../avatar/${userinfo[targetId].avatar}.png`)}
+								// thumb={AvatarImages[`${userinfo[targetId].avatar}.png`]}
 								arrow="horizontal"
 								onClick={() => {
 									this.props.history.push(`/chat/${targetId}`)

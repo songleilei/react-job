@@ -3,7 +3,7 @@ import { TabBar } from 'antd-mobile'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { importAllImages } from '../../util'
+// import { importAllImages } from '../../util'
 
 @withRouter
 @connect((state) => state.chat)
@@ -23,9 +23,10 @@ class NavLinkBar extends React.Component {
 						badge={v.path === '/msg' ? this.props.unread : 0}
 						key={v.path}
 						title={v.text}
-						// icon={{ uri: require(`./img/${v.icon}.png`) }}
-						icon={{ uri: images[`${v.icon}.png`] }}
-						selectedIcon={{ uri: images[`${v.icon}-active.png`] }}
+						icon={{ uri: require(`./img/${v.icon}.png`) }}
+						// icon={{ uri: images[`${v.icon}.png`] }}
+						selectedIcon={{ uri: require(`./img/${v.icon}-active.png`) }}
+						// selectedIcon={{ uri: images[`${v.icon}-active.png`] }}
 						selected={pathname === v.path}
 						onPress={() => this.props.history.push(v.path)}
 					></TabBar.Item>
@@ -35,6 +36,6 @@ class NavLinkBar extends React.Component {
 	}
 }
 
-const images = importAllImages(require.context('./img', false, /.png$/))
+// const images = importAllImages(require.context('./img', false, /.png$/))
 
 export default NavLinkBar

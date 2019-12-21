@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, List } from 'antd-mobile'
 import PropTypes from 'prop-types'
 
-import { AvatarImages } from '../../util'
+// import { AvatarImages } from '../../util'
 
 class AvatarSelector extends React.Component {
 	static propTypes = {
@@ -16,8 +16,8 @@ class AvatarSelector extends React.Component {
 
 	render() {
 		const avatarList = Array.from(new Array(20)).map((_val, i) => ({
-			// icon: require(`../../avatar/${i + 1}.png`)
-			icon: AvatarImages[`${i + 1}.png`],
+			icon: require(`../../avatar/${i + 1}.png`),
+			// icon: AvatarImages[`${i + 1}.png`],
 			index: `${i + 1}`
 		}))
 

@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const model = require('./model')
 const Chat = model.getModel('chat')
+const User = model.getModel('user')
+
 const path = require('path')
 
 const app = express()
@@ -100,3 +102,19 @@ app.all('*', function(req, res, next) {
 server.listen(9093, function() {
 	console.log('Node app start at port 9093')
 })
+
+// Chat.remove({}, function(err, doc) {
+// 	if (!err) {
+// 		console.log('delete chat success')
+// 	} else {
+// 		console.log(err)
+// 	}
+// })
+
+// User.remove({}, function(err, doc) {
+// 	if (!err) {
+// 		console.log('delete user success')
+// 	} else {
+// 		console.log(err)
+// 	}
+// })
